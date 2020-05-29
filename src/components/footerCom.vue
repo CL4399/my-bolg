@@ -1,13 +1,19 @@
 <template>
   <div class="content">
     <div class="left">
-      <div class="left_top" v-for="item in content" :key="item.id">
-        <div class="title">{{item.title}}</div>
-        <div class="item">
+      <div
+        class="left_top"
+        @mouseover="handleOpen"
+        @mouseout="handleClose"
+        v-for="item in content"
+        :key="item.id"
+      >
+        <div class="center">
+          <div class="title">{{item.title}}</div>
           <div class="item_content">{{item.item}}</div>
           <div class="about">
-            <div>{{item.author}}</div>
-            <div>{{item.dataTime}}</div>
+            {{item.author}}
+            {{item.dataTime}}
           </div>
         </div>
       </div>
@@ -83,6 +89,16 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    handleOpen(e) {
+      e.path[0].style.backgroundColor = "darkgray";
+      e.path[0].style.color = "white";
+    },
+    handleClose(e) {
+      e.path[0].style.backgroundColor = "white";
+      e.path[0].style.color = "darkgray";
+    }
   }
 };
 </script>
@@ -92,16 +108,18 @@ export default {
 .content {
   width: 100%;
   display: flex;
-  position: absolute;
-  top: 3rem;
   .left {
     width: 90%;
     margin: 2rem auto;
     background-color: #fff;
     background: #eee;
-     :hover{
-       background-color: #666;
-     }
+
+    :hover {
+      transition: all 1.5s linear;
+      transform: scaleX(1.05);
+      color: #ccc;
+      transform-origin: center;
+    }
     @media only screen and (max-width: 540px) {
       width: 90%;
     }
@@ -115,41 +133,48 @@ export default {
       box-shadow: 1px 1px 10px #000;
       margin-bottom: 10px;
       border-radius: 1rem;
-      .title {
-        text-align: center;
-        font-size: 2rem;
-        text-shadow: 1px 1px 5px #ccc;
-        font-weight: 600;
-        color: #666;
-        @media only screen and (max-width: 540px) {
-          font-size: 1.5rem;
-        }
+      overflow: hidden;
+
+      :hover {
+        transition: all 1.5s linear;
+        transform: scaleX(0.9);
+        color: #ccc;
+        transform-origin: center;
       }
-      .item {
-        height: 14.5rem;
-        width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp:9;
-        margin-top: 20px;
+      .center {
         display: flex;
         flex-direction: column;
-        font-size: 1.3rem;
-        color: #333;
-        letter-spacing: 0.1rem;
-        text-indent: 2em;
-        @media only screen and (max-width: 540px) {
-          font-size: 1rem;
+
+        .title {
+          font-size: 2rem;
+          text-shadow: 1px 1px 5px #ccc;
+          font-weight: 600;
+          color: #666;
+          @media only screen and (max-width: 540px) {
+            font-size: 1.5rem;
+          }
         }
         .item_content {
-          height: 9rem;
-          flex: 3;
+          width: 100%;
+          flex: 6;
+          overflow: hidden;
+          flex-wrap: wrap;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 9;
+          display: flex;
+          flex-direction: column;
+          font-size: 1.3rem;
+          color: #333;
+          letter-spacing: 0.1rem;
+          text-indent: 2em;
+          @media only screen and (max-width: 540px) {
+            font-size: 1rem;
+          }
         }
         .about {
           flex: 1;
-          margin-top: 2.5rem;
           text-align: right;
         }
       }

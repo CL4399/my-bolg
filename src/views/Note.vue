@@ -10,10 +10,13 @@
           <div></div>
           <div class="div2"></div>
           <div class="title">
-            <router-link to="/Home" tag="div">主页</router-link>
+            <router-link to="/" tag="div">主页</router-link>
           </div>
           <div class="title">
             <router-link to="/Note" tag="div">随笔</router-link>
+          </div>
+           <div class="title">
+            <router-link class="link" to="/note" tag="div">资源</router-link>
           </div>
           <div class="title">
             <router-link to="/about" tag="div">关于我</router-link>
@@ -26,9 +29,10 @@
       <div class="toggle-button" @click="toggleCollapse">|||</div>
       <div class="nav" v-if="isAbc">
         <ul class="ul">
-          <li>首页</li>
-          <li>随笔</li>
-          <li>关于我</li>
+          <li><router-link to="/" tag="div">主页</router-link></li>
+          <li><router-link to="/Note" tag="div">随笔</router-link></li>
+          <li><router-link class="link" to="/note" tag="div">资源</router-link></li>
+          <li><router-link to="/about" tag="div">关于我</router-link></li>
         </ul>
       </div>
     </header>
@@ -124,34 +128,29 @@ export default {
 }
 .box {
   width: 60%;
+  margin: 3rem auto;
   @media only screen and (max-width: 540px) {
     width: 80%;
-    position: relative;
-    top: 0;
-    left: 5%;
     font-size: 1rem;
     letter-spacing: 0.1rem;
-    margin: 20px;
+    margin: 0 auto;
   }
   display: flex;
   z-index: 1;
-  position: relative;
-  top: 5rem;
-  left: 25%;
   .item {
     flex: 5;
     background-color: #ccc;
     opacity: 0.5;
     letter-spacing: 0.2rem;
     text-indent: 2rem;
-    margin: 2rem;
+    margin:.8rem;
     box-shadow: 1px 1px 5px #000;
   }
   .item1 {
     flex: 5;
     background-color: #ccc;
     opacity: 0.5;
-    margin: 2rem;
+    margin: .8rem;
     letter-spacing: 0.2rem;
     text-indent: 2rem;
     box-shadow: 1px 1px 5px #000;
