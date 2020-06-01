@@ -19,6 +19,11 @@ Vue.use(VueRouter)
     path: '/note',
     name: 'Note',
     component: () => import(/* webpackChunkName: "about" */ '../views/Note.vue')
+  },
+  {
+    path: '/resource',
+    name: 'Resource',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Resource.vue')
   }
 ]
 

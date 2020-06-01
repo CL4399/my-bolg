@@ -13,10 +13,10 @@
             <router-link to="/" tag="div">主页</router-link>
           </div>
           <div class="title">
-            <router-link to="/Note" tag="div">随笔</router-link>
+            <router-link to="/note" tag="div">随笔</router-link>
           </div>
           <div class="title">
-            <router-link class="link" to="/note" tag="div">资源</router-link>
+            <router-link class="link" to="/resource" tag="div">资源</router-link>
           </div>
           <div class="title">
             <router-link to="/about" tag="div">关于我</router-link>
@@ -114,13 +114,16 @@
             <a href="https://fontawesome.dashgame.com/">FontAwesome</a>
           </li>
           <li>
-            <a href="https://lanhuapp.com/web/#/item">蓝湖</a>
+            <a href="http://css.cuishifeng.cn/">CSS参考手册</a>
           </li>
           <li>
-            <a href="https://images.ac.cn/simple.html">土豆图床</a>
+            <a href="https://element.eleme.cn/#/zh-CN/component/input">饿了么</a>
           </li>
           <li>
-            <a href="https://fontawesome.dashgame.com/">FontAwesome</a>
+            <a href="https://www.bootcss.com/">bootstrap</a>
+          </li>
+          <li>
+            <a href="https://youzan.github.io/vant-weapp/#/quickstart">Vant</a>
           </li>
         </ul>
       </div>
@@ -146,13 +149,13 @@
             <a href="https://fontawesome.dashgame.com/">FontAwesome</a>
           </li>
           <li>
-            <a href="https://lanhuapp.com/web/#/item">蓝湖</a>
+            <a href="http://css.cuishifeng.cn/">CSS参考手册</a>
           </li>
           <li>
-            <a href="https://images.ac.cn/simple.html">土豆图床</a>
+            <a href="https://element.eleme.cn/#/zh-CN/component/input">饿了么</a>
           </li>
           <li>
-            <a href="https://fontawesome.dashgame.com/">FontAwesome</a>
+            <a href="https://www.bootcss.com/">bootstrap</a>
           </li>
         </ul>
       </div>
@@ -337,7 +340,7 @@ export default {
     }
     .right {
       color: #666;
-      text-shadow: 1px 1px 1px aqua;
+      text-shadow: 1px 1px 1px #99ffff;
     }
   }
 }

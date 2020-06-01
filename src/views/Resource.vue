@@ -29,61 +29,27 @@
       </div>
     </nav>
 
-    <footer-com class="content">
-      <div class="top2">
-        <a href="#top">Top</a>
+    <div class="ani">
+      <div class="bb">
+        <p>{{contents}}</p>
       </div>
-    </footer-com>
-
-    <div class="href" v-show="!showAbs">
-      <a href="#one">
-        <img src="../assets/10.png" alt />
-      </a>
     </div>
   </div>
 </template>
 
 <script>
-import footerCom from "../components/footerCom";
 export default {
-  name: "Home",
+  name: "Resource",
   data() {
     return {
+      contents: "不在沉默中爆发，就在沉默中灭亡",
       showAbs: true
     };
-  },
-  components: {
-    footerCom
-  },
-  methods: {
-    handleScroll() {
-      // console.log("scroll");
-      const top = document.documentElement.scrollTop;
-      if (top > 50) {
-        let opacity = top / 140;
-        opacity = opacity > 1 ? 1 : opacity;
-        this.opacityStyle = { opacity };
-        this.showAbs = false;
-      } else {
-        this.showAbs = true;
-      }
-    }
-  },
-  mounted() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  unmounted() {
-    window.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>
 
-<style lang="less" scoped>
-/* pc */
-@media only screen and (min-width: 540px) and (max-width: 1980px) {
-}
-/* 移动端 */
-
+<style lang='less' scoped>
 header {
   width: 100%;
   height: 100%;
@@ -92,11 +58,11 @@ header {
     display: flex;
     .img1 {
       height: 8rem;
-      @media only screen and (max-width: 540px) {
-        height: 4rem;
-      }
       border-radius: 50%;
       transition: all 1s linear;
+      @media only screen and (max-width: 540px) {
+        height: 5rem;
+      }
       :hover {
         transform: rotateZ(180deg);
       }
@@ -110,9 +76,10 @@ header {
   color: #000;
   position: absolute;
   top: 4rem;
+  z-index: 1;
   @media only screen and (max-width: 540px) {
     position: absolute;
-    top: 4rem;
+    top: 5rem;
   }
   .right {
     display: flex;
@@ -142,13 +109,74 @@ header {
     }
   }
 }
-.content {
+.bb,
+.bb::before,
+.bb::after {
   position: absolute;
-  top: 6rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 4.5rem;
 }
-.href {
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
+
+.ani {
+  background: #000;
+  opacity: 0.8;
+  height: 16rem;
+  border-radius: 2rem;
+  position: absolute;
+  top: 10rem;
+  bottom: 0;
+  left: 3.8%;
+  right: 0;
+  @media only screen and (max-width: 540px) {
+    position: absolute;
+    top: 10rem;
+    width: 92.5%;
+  }
+}
+
+.bb {
+  width: 12rem;
+  height: 12rem;
+  margin: auto;
+  background: url("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4005610539,1460288450&fm=26&gp=0.jpg");
+  color: #ccffff;
+  box-shadow: 0.1rem 0.1rem 3rem #fff;
+}
+
+.bb::before,
+.bb::after {
+  content: "";
+  z-index: 1;
+  margin: -5%;
+  box-shadow: inset 0 0 0 0.2rem;
+  animation: clipMe 8s linear infinite;
+}
+
+.bb::before {
+  animation-delay: -4s;
+}
+
+@keyframes clipMe {
+  0%,
+  100% {
+    clip: rect(0px, 13.26rem, 0.1rem, 0px);
+  }
+
+  25% {
+    clip: rect(0px, 0.1rem, 13.26rem, 0px);
+  }
+
+  50% {
+    clip: rect(12rem, 13.26rem, 13.26rem, 0px);
+  }
+
+  75% {
+    clip: rect(0px, 13.26rem, 13.26rem, 12rem);
+  }
 }
 </style>
