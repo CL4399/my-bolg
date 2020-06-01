@@ -13,7 +13,7 @@
             <router-link to="/" tag="div">主页</router-link>
           </div>
           <div class="title">
-            <router-link to="/note" tag="div">随笔</router-link>
+            <router-link class="note" to="/note" tag="div">随笔</router-link>
           </div>
            <div class="title">
             <router-link class="link" to="/resource" tag="div">资源</router-link>
@@ -67,7 +67,7 @@ export default {
   methods: {
     getContent() {
       this.contentList = this.$store.state.note;
-      console.log(this.contentList);
+      // console.log(this.contentList);
     },
     //  点击按钮切换菜单的折叠与展开
     toggleCollapse() {
@@ -118,6 +118,9 @@ export default {
         @media only screen and (max-width: 540px) {
           font-size: 1rem;
           letter-spacing: 0.1rem;
+        }
+        .note{
+          background-color: #666;
         }
       }
       .title :hover {

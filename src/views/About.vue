@@ -19,7 +19,7 @@
             <router-link class="link" to="/resource" tag="div">资源</router-link>
           </div>
           <div class="title">
-            <router-link to="/about" tag="div">关于我</router-link>
+            <router-link class="about" to="/about" tag="div">关于我</router-link>
           </div>
         </div>
       </nav>
@@ -222,6 +222,9 @@ export default {
         @media only screen and (max-width: 540px) {
           font-size: 1rem;
           letter-spacing: 0.1rem;
+        }
+        .about{
+          background-color: #666;
         }
       }
       .title :hover {

@@ -21,7 +21,7 @@
           <router-link class="link" to="/note" tag="div">随笔</router-link>
         </div>
         <div class="title">
-          <router-link class="link" to="/resource" tag="div">资源</router-link>
+          <router-link class="link resource" to="/resource" tag="div">资源</router-link>
         </div>
         <div class="title">
           <router-link class="link" to="/about" tag="div">关于我</router-link>
@@ -98,10 +98,16 @@ header {
         letter-spacing: 0.1rem;
       }
       .link {
-        width: 6rem;
+        @media only screen and (max-width: 920px) {
+          width: 6rem;
+        }
+        width: 12rem;
         height: 3rem;
         background-color: #ccc;
         border-radius: 2rem;
+      }
+      .resource{
+        background-color: #666;
       }
     }
     .title :hover {
@@ -130,11 +136,12 @@ header {
   position: absolute;
   top: 10rem;
   bottom: 0;
-  left: 3.8%;
+  left: 0;
   right: 0;
   @media only screen and (max-width: 540px) {
     position: absolute;
     top: 10rem;
+    left: 1rem;
     width: 92.5%;
   }
 }
@@ -146,6 +153,9 @@ header {
   background: url("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4005610539,1460288450&fm=26&gp=0.jpg");
   color: #ccffff;
   box-shadow: 0.1rem 0.1rem 3rem #fff;
+  @media only screen and (max-width: 1024px) {
+    
+  }
 }
 
 .bb::before,
