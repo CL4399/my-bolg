@@ -96,10 +96,6 @@ header {
         height: 4rem;
       }
       border-radius: 50%;
-      transition: all 1s linear;
-      :hover {
-        transform: rotateZ(180deg);
-      }
     }
   }
 }

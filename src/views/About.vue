@@ -343,7 +343,7 @@ export default {
     }
     .right {
       color: #666;
-      text-shadow: 1px 1px 1px #99ffff;
+      text-shadow: 1px 1px 1px #fff;
     }
   }
 }

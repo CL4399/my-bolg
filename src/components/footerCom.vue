@@ -1,22 +1,21 @@
 <template>
   <div class="content">
     <div class="left">
-      <div
-        class="left_top"
-        @mouseover="handleOpen"
-        @mouseout="handleClose"
+      <el-collapse
+        change="true"
+        accordion
+        v-model="activeName"
         v-for="item in content"
         :key="item.id"
       >
-        <div class="center">
-          <div class="title">{{item.title}}</div>
-          <div class="item_content">{{item.item}}</div>
-          <div class="about">
-            {{item.author}}
-            {{item.dataTime}}
-          </div>
-        </div>
-      </div>
+        <el-collapse-item :title="item.title" :name="item.id">
+          <div>{{item.item}}</div>
+        </el-collapse-item>
+      </el-collapse>
+    </div>
+    <div class="center"></div>
+    <div class="right">
+      <el-calendar v-model="value"></el-calendar>
     </div>
   </div>
 </template>
@@ -87,18 +86,10 @@ export default {
           author: "CL",
           dataTime: "2020-3-24"
         }
-      ]
+      ],
+      activeName: "1",
+      value: new Date()
     };
-  },
-  methods: {
-    handleOpen(e) {
-      e.path[0].style.backgroundColor = "darkgray";
-      e.path[0].style.color = "white";
-    },
-    handleClose(e) {
-      e.path[0].style.backgroundColor = "white";
-      e.path[0].style.color = "darkgray";
-    }
   }
 };
 </script>
@@ -106,77 +97,65 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .content {
-  width: 100%;
+  width: 90%;
+  margin: 3rem;
+  padding: 1rem;
+  position: relative;
+  top: 10%;
+  left: 2%;
+  box-shadow: 3px 3px 10px #333;
+  border-radius: 2rem;
+  @media only screen and (max-width: 1024px) {
+    width: 100%;
+    margin: 4.5rem;
+  }
   display: flex;
+  @media only screen and (max-width: 540px) {
+    width: 80%;
+    margin: 2rem;
+    flex-direction: column;
+    position: relative;
+    top: 10%;
+    left: -1%;
+  }
   .left {
-    width: 90%;
-    margin: 2rem auto;
-    background-color: #fff;
-    background: #eee;
-
-    :hover {
-      transition: all 1.5s linear;
-      transform: scaleX(1.05);
-      color: #ccc;
-      transform-origin: center;
-    }
-    @media only screen and (max-width: 540px) {
-      width: 90%;
-    }
-    @media only screen and (min-width: 1080px) {
-      width: 50%;
-    }
-    .left_top {
-      height: 20rem;
-      margin: 1rem;
-      padding: 20px;
-      box-shadow: 1px 1px 10px #000;
-      margin-bottom: 10px;
-      border-radius: 1rem;
-      overflow: hidden;
-
-      :hover {
-        transition: all 1.5s linear;
-        transform: scaleX(0.9);
-        color: #ccc;
-        transform-origin: center;
+    flex: 2;
+    .el-collapse {
+      width: 100%;
+      background-color: #eee;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      .el-collapse-item {
+        margin-top: 1.7rem;
+        border-bottom: 1px solid aqua;
+        @media only screen and (max-width: 540px) {
+          border-bottom: 1px solid #000;
+          letter-spacing: 0.3rem;
+          text-indent: 2rem;
+        }
+        /deep/.el-collapse-item__header {
+          background-color: #eee;
+          opacity: .7;
+        }
       }
-      .center {
-        display: flex;
-        flex-direction: column;
-
-        .title {
-          font-size: 2rem;
-          text-shadow: 1px 1px 5px #ccc;
-          font-weight: 600;
-          color: #666;
-          @media only screen and (max-width: 540px) {
-            font-size: 1.5rem;
-          }
-        }
-        .item_content {
-          width: 100%;
-          flex: 6;
-          overflow: hidden;
-          flex-wrap: wrap;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 9;
-          display: flex;
-          flex-direction: column;
-          font-size: 1.3rem;
-          color: #333;
-          letter-spacing: 0.1rem;
-          text-indent: 2em;
-          @media only screen and (max-width: 540px) {
-            font-size: 1rem;
-          }
-        }
-        .about {
-          flex: 1;
-          text-align: right;
-        }
+    }
+  }
+  .center {
+    flex: 0.2;
+    @media only screen and (max-width: 540px) {
+      display: none;
+    }
+  }
+  .right {
+    flex: 1;
+    margin: 2rem;
+    @media only screen and (max-width: 540px) {
+      margin: 1rem 0rem 0rem 0rem;
+    }
+    .el-calendar {
+      background-color: #eee;
+      @media only screen and (max-width: 540px) {
+        background-color: #eee;
       }
     }
   }
