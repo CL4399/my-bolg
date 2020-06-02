@@ -136,7 +136,6 @@ header {
     .title :hover {
       background-color: #666;
     }
-    
   }
 }
 .content {
