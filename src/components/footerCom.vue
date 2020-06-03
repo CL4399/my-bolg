@@ -137,6 +137,9 @@ export default {
           background-color: #eee;
           opacity: .7;
         }
+        /deep/.el-collapse-item__content{
+          background-color: #eee;
+        }
       }
     }
   }

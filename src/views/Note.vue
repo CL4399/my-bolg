@@ -15,7 +15,7 @@
           <div class="title">
             <router-link class="note" to="/note" tag="div">随笔</router-link>
           </div>
-           <div class="title">
+          <div class="title">
             <router-link class="link" to="/resource" tag="div">资源</router-link>
           </div>
           <div class="title">
@@ -26,22 +26,61 @@
     </header>
 
     <header class="iphone">
-      <div class="toggle-button" @click="toggleCollapse">|||</div>
-      <div class="nav" v-if="isAbc">
-        <ul class="ul">
-          <li><router-link to="/" tag="div">主页</router-link></li>
-          <li><router-link to="/note" tag="div">随笔</router-link></li>
-          <li><router-link class="link" to="/resource" tag="div">资源</router-link></li>
-          <li><router-link to="/about" tag="div">关于我</router-link></li>
-        </ul>
-      </div>
+      <el-button @click="drawer = true" type="primary">|||</el-button>
+      <el-drawer :visible.sync="drawer" :direction="direction">
+        <el-row style="width: 15rem">
+          <el-col :span="12">
+            <el-menu
+              default-active="2"
+              class="el-menu-vertical-demo"
+              background-color="#545c64"
+              text-color="#fff"
+              active-text-color="#ffd04b"
+              router
+            >
+              <el-menu-item index="1" route="/">
+                <i class="el-icon-menu"></i>
+                <span route slot="title">首页</span>
+              </el-menu-item>
+              <el-menu-item index="2" route="/note">
+                <i class="el-icon-menu"></i>
+                <span route slot="title">随笔</span>
+              </el-menu-item>
+              <el-menu-item index="3" route="/resource">
+                <i class="el-icon-menu"></i>
+                <span route slot="title">资源</span>
+              </el-menu-item>
+              <el-menu-item index="4" route="/about">
+                <i class="el-icon-menu"></i>
+                <span route slot="title">关于我</span>
+              </el-menu-item>
+            </el-menu>
+          </el-col>
+        </el-row>
+      </el-drawer>
     </header>
 
     <!-- 瀑布流 -->
-    <div class="box" v-for="item in contentList" :key="item.id">
-      <div class="item">{{item.title}}</div>
-      <div class="item1">
-          {{item.item}}
+    <div class="box">
+      <div class="left" v-for="item in noteList" :key="item.id">
+        <!-- <div class="item">{{item.title}}</div>
+        <div class="item1">{{item.item}}</div>-->
+        <div class="left_box">
+          <el-card class="box-card1">
+            <div v-for="o in 1" :key="o" class="text item">{{item.item}}</div>
+          </el-card>
+        </div>
+      </div>
+      <div class="right" v-for="item in verseList" :key="item.id">
+        <!-- <div class="item">{{item.title}}</div>
+        <div class="item1">{{item.item}}</div>-->
+        <div class="right_box">
+          <el-card class="box-card2">
+            <span>{{item.title}}</span>
+            <el-divider></el-divider>
+            <div v-for="o in 1" :key="o" class="text item">{{item.item}}</div>
+          </el-card>
+        </div>
       </div>
     </div>
   </div>
@@ -56,9 +95,12 @@ export default {
   },
   data() {
     return {
-      contentList: [],
+      noteList: [],
+      verseList: [],
       isCollapse: true,
-      isAbc: true
+      isAbc: true,
+      drawer: false,
+      direction: "ltr"
     };
   },
   mounted() {
@@ -66,7 +108,9 @@ export default {
   },
   methods: {
     getContent() {
-      this.contentList = this.$store.state.note;
+      this.noteList = this.$store.state.note;
+      this.verseList = this.$store.state.verse;
+      // console.log(this.verseList);
       // console.log(this.contentList);
     },
     //  点击按钮切换菜单的折叠与展开
@@ -119,7 +163,7 @@ export default {
           font-size: 1rem;
           letter-spacing: 0.1rem;
         }
-        .note{
+        .note {
           background-color: #666;
         }
       }
@@ -130,42 +174,45 @@ export default {
   }
 }
 .box {
-  width: 60%;
-  margin: 3rem auto;
-  @media only screen and (max-width: 540px) {
-    width: 80%;
-    font-size: 1rem;
-    letter-spacing: 0.1rem;
-    margin: 0 auto;
-  }
   display: flex;
-  z-index: 1;
-  .item {
-    flex: 5;
-    background-color: #ccc;
-    opacity: 0.5;
-    letter-spacing: 0.2rem;
-    text-indent: 2rem;
-    margin:.8rem;
-    box-shadow: 1px 1px 5px #000;
+  flex-direction: column;
+  margin: 3rem 1rem 1rem 1rem;
+  padding: 1rem;
+  min-width: 20rem;
+  @media only screen and (min-width: 1024px) {
+    width: 60%;
+    position: absolute;
+    left: 20%;
+}
+  .left {
+    flex: 1;
+    margin: .5rem;
   }
-  .item1 {
-    flex: 5;
-    background-color: #ccc;
-    opacity: 0.5;
-    margin: .8rem;
-    letter-spacing: 0.2rem;
-    text-indent: 2rem;
-    box-shadow: 1px 1px 5px #000;
-    @media only screen and (max-width: 540px) {
-      display: none;
-    }
+  .right {
+    flex: 1;
+    margin: 0.5rem;
   }
 }
 .iphone {
   display: none;
   @media only screen and (max-width: 540px) {
     display: block;
+  }
+  .el-button {
+    width: 96%;
+    height: 2rem;
+    line-height: 0.5rem;
+    margin: 0.5rem;
+    background-color: #545c64;
+    box-shadow: 1px 1px 5px #545c64;
+    border: 1px solid #545c64;
+  }
+  .el-drawer {
+    width: 40%;
+  }
+  .el-menu-item {
+    height: 5rem;
+    margin: 0.5rem;
   }
   .toggle-button {
     height: 24px;

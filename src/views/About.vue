@@ -284,13 +284,14 @@ export default {
     .left {
       display: flex;
       flex-direction: column;
+      overflow: hidden;
       .img1 {
         flex: 2;
         width: 15rem;
         height: 20rem;
-        @media only screen and (min-width: 700px)and (max-width: 1000px) {
+        @media only screen and (max-width: 1980px) {
           width: 15rem;
-          height: 10rem;
+          height: 26rem;
         }
       }
       .img2 {
@@ -325,6 +326,7 @@ export default {
   height: 35rem;
   background: #ccc;
   display: none;
+  min-width: 20rem;
   @media only screen and (max-width: 700px) {
     display: block;
   }
