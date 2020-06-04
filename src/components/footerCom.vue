@@ -10,6 +10,8 @@
       >
         <el-collapse-item :title="item.title" :name="item.id">
           <div>{{item.item}}</div>
+          <div class="author">作者:{{item.author}}</div>
+          <div class="time">时间:{{item.dataTime}}</div>
         </el-collapse-item>
       </el-collapse>
     </div>
@@ -25,71 +27,18 @@ export default {
   name: "footerCom",
   data() {
     return {
-      content: [
-        {
-          id: 1,
-          title: "Vue生命周期",
-          item: ` vue每个组件都是独立的，每个组件都有一个属于它的生命周期，从一个组件创建、数据初始化、挂载、更新、销毁，这就是一个组件所谓的生命周期。
-                  共8个钩子函数		beforeCreate
-                  created、
-                  beforeMount、
-                  mounted、
-                  beforeUpdate、
-                  updated、
-                  beforeDestroy、
-                  destroyed
-                  ，data props computed watch methods之间的生成顺序props ->methods ->data -> computed -> watch
-                `,
-          author: "CL",
-          dataTime: "2020-3-24"
-        },
-        {
-          id: 2,
-          title: "MVVM",
-          item: `MVVM 是 Model-View-ViewModel 的缩写。
-                  Model代表数据模型，也可以在Model中定义数据修改和操作的业务逻辑。
-                  View 代表UI 组件，它负责将数据模型转化成UI 展现出来。
-                  ViewModel 监听模型数据的改变和控制视图行为、处理用户交互,
-                  在MVVM架构下，View 和 Model 之间并没有直接的联系，而是通过ViewModel进行交互，Model 和 ViewModel 之间的交互是双向的， 
-                  因此View 数据的变化会同步到Model中，而Model 数据的变化也会立即反应到View 上。
-                  ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来。	
-                `,
-          author: "CL",
-          dataTime: "2020-3-24"
-        },
-        {
-          id: 3,
-          title: "Vue中的计算属性与帧听器",
-          item: `计算属性是依赖的值改变会重新执行函数，计算属性是取返回值作为最新结果，所以里面不能异步的返回结果。不能写异步逻辑。
-                  侦听属性是侦听的值改变会重新执行函数，将一个值重新赋值作为最新结果，所以赋值的时候可以进行一些异步操作。 	
-                `,
-          author: "CL",
-          dataTime: "2020-3-24"
-        },
-        {
-          id: 4,
-          title: "Vue中的计算属性与帧听器",
-          item: `计算属性是依赖的值改变会重新执行函数，计算属性是取返回值作为最新结果，所以里面不能异步的返回结果。不能写异步逻辑。
-                  侦听属性是侦听的值改变会重新执行函数，将一个值重新赋值作为最新结果，所以赋值的时候可以进行一些异步操作。 	
-                `,
-          author: "CL",
-          dataTime: "2020-3-24"
-        },
-        {
-          id: 5,
-          title: "async与await",
-          item: `async
-                  async的用法，它作为一个关键字放到函数前面，用于表示函数是一个异步函数，因为async就是异步的意思， 异步函数也就意味着该函数的执行不会阻塞后面代码的执行，async 函数返回的是一个promise 对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。
-                  await
-                  await的含义为等待。意思就是代码需要等待await后面的函数运行完并且有了返回结果之后，才继续执行下面的代码。这正是同步的效果。
-              `,
-          author: "CL",
-          dataTime: "2020-3-24"
-        }
-      ],
+      content: [],
       activeName: "1",
       value: new Date()
     };
+  },
+  mounted() {
+    this.getContent();
+  },
+  methods: {
+    getContent() {
+      this.content = this.$store.state.content;
+    }
   }
 };
 </script>
@@ -126,6 +75,7 @@ export default {
       border-radius: 0.5rem;
       margin-top: 1rem;
       .el-collapse-item {
+        position: relative;
         margin-top: 1.7rem;
         border-bottom: 1px solid aqua;
         @media only screen and (max-width: 540px) {
@@ -135,10 +85,14 @@ export default {
         }
         /deep/.el-collapse-item__header {
           background-color: #eee;
-          opacity: .7;
+          opacity: 0.7;
         }
-        /deep/.el-collapse-item__content{
+        /deep/.el-collapse-item__content {
           background-color: #eee;
+        }
+
+        .author{
+          
         }
       }
     }

@@ -62,6 +62,65 @@ const state = {
       `,
       author: "CL",
       dataTime: "2020-3-24"
+    },
+    {
+      id: "6",
+      title: "Cookie和Session",
+      item: `1、cookie的数据存放在客户的浏览器上，session存放在服务器里面。
+      2、cookie不是很安全，别人可以分析存放在本地的COOKIE进行COOKIE欺骗。
+      3、session会在一定时间内保存在服务器上，当访问增多会比较占用服务器性能。
+      4、单个cookie保存数据不能超过4k，很多浏览器限制一个站点最多保存20个cookie。`,
+      author: "CL",
+      dataTime: "2020-3-24"
+    },
+    {
+      id: "7",
+      title: "浏览器输入网址到页面渲染",
+      item: `1、服务器查找域名IP地址，查找顺序：浏览器缓存=>系统缓存=>路由器缓存。
+              2、域名解析（DNS解析）。
+              3、浏览器向服务器发起TCP请求，与浏览器建立三次握手。
+              4、握手成功后，浏览器向服务器发送http请求。
+              5、服务器收到请求并处理，然后返回到浏览器。
+              6、浏览器收到HTTP响应，读取页面内容，浏览器渲染，解析html源码。
+              7、生成DOM树、解析css样式、js交互。
+              8、客户端和服务器交互。`,
+      author: "CL",
+      dataTime: "2020-3-24"
+    },
+    {
+      id: "8",
+      title: "闭包",
+      item: `定义：当一个嵌套的内部函数引用了嵌套外部函数的变量，就产生了闭包。特性：1、函数嵌套函数。
+      2、函数内部可以引用外部的参数和变量。
+      3、参数和变量不会被垃圾回收机制回收。
+      优点：1、保护函数内的变量安全，实现封装，防止变量流入其他环境发生命名冲突。2、在内存中维持一个变量，可以做缓存。3、匿名执行函数可以减少内存消耗。
+      缺点：1、增大了内存消耗，滥用闭包会造成内存泄漏。
+      使用方法：1将函数作为另一个函数的返回值。2、将函数作为一个实参传递给另一个函数。`,
+      author: "CL",
+      dataTime: "2020-3-24"
+    },
+    {
+      id: "9",
+      title: "web性能优化",
+      item: `1、降低请求量：合并资源、减少HTTP请求数、minify/gzip 压缩、webP、lazyLoad。
+            2、加快请求速度：预解析DNS、减少域名数、并行加载、CDN分发。
+            3、缓存：HTTP协议缓存请求、离线缓存manifest、离线数据缓存localStorage。
+            4、渲染：Js/Css优化、加载顺序、服务端渲染。`,
+      author: "CL",
+      dataTime: "2020-3-24"
+    },
+    {
+      id: "10",
+      title: "post/get",
+      item: `1、GET - 从指定的资源请求数据。
+      2、POST - 向指定的资源提交要被处理的数据。
+      3、GET：不同的浏览器和服务器不同，一般限制在2~8k之间，更常见的是1k以内。
+      4、GET和POST的底层也是TCP/IP，GET/POST都是TCP链接。
+      5、GET产生一个TCP数据包，POST产生两个TCP数据包。
+      6、GET请求，浏览器会把http header和data一并发送出去，服务器响应200。
+      7、POST请求，浏览器会先发送header，服务器响应100 continue，浏览器再发送data。服务器响应200`,
+      author: "CL",
+      dataTime: "2020-3-24"
     }
   ],
   note: [{
@@ -162,9 +221,141 @@ const state = {
     id: "22",
     title: '桃之夭夭，灼灼其华。一一佚名《桃夭》',
     item: `桃之夭夭，灼灼其华。之子于归，宜其室家。桃之夭夭，有蕡其实。之子于归，宜其家室。桃之夭夭，其叶蓁蓁。之子于归，宜其家人。`
+  }],
+  resource: [{
+    id: "1",
+    title: "My-GitHub",
+    item: "https://github.com/CL4399"
+  }, {
+    id: "2",
+    title: "jQ插件库",
+    item: "http://www.jq22.com/"
+  }, {
+    id: "3",
+    title: "pexels",
+    item: "https://www.pexels.com/zh-cn/"
+  }, {
+    id: "4",
+    title: "蓝湖",
+    item: "https://lanhuapp.com/web/#/item"
+  }, {
+    id: "5",
+    title: "土豆图床",
+    item: "https://images.ac.cn/simple.html"
+  }, {
+    id: "6",
+    title: "FontAwesome",
+    item: "https://fontawesome.dashgame.com/"
+  }, {
+    id: "7",
+    title: "CSS参考手册",
+    item: "http://css.cuishifeng.cn/"
+  }, {
+    id: "8",
+    title: "饿了么",
+    item: "https://element.eleme.cn/#/zh-CN/component/input"
+  }, {
+    id: "9",
+    title: "bootstrap",
+    item: "https://www.bootcss.com/"
+  }, {
+    id: "10",
+    title: "Vant",
+    item: "https://youzan.github.io/vant-weapp/#/quickstart"
+  }],
+  about: [{
+    id: "1",
+    item: "熟练掌握HTML+CSS+Javascript 三大前端基础"
+  }, {
+    id: "2",
+    item: "能使用HTML+CSS制作符合W3C规范页面，熟练使用CSS预处理器Stylus或者LESS进行项目样式单元的开发"
+  }, {
+    id: "3",
+    item: "熟悉flex弹性布局和响应式布局"
+  }, {
+    id: "4",
+    item: "熟练掌握原生JavaScript、原型、闭包、作用域等"
+  }, {
+    id: "5",
+    item: "熟悉ES6新特性并使用ES6进行开发、熟悉jQuery"
+  }, {
+    id: "6",
+    item: "熟练使用vue、使用vue全家桶( vue-router、vuex、axios、vue-cli )"
+  }, {
+    id: "7",
+    item: "了解微信小程序"
+  }, {
+    id: "8",
+    item: "了解 webpack打包工具、熟练使用git命令，熟练使用node包管理工具npm "
+  }, {
+    id: "9",
+    item: "熟悉element ui ，vant等ui框架，有相关项目经验"
+  }, {
+    id: "10",
+    item: "熟练使用Photoshop切图软件、熟练使用VSCode、Postman等工具进行项目开发。"
+  }],
+  project: [{
+    id: "1",
+    title: "后台管理系统",
+    title1: "项目描述:",
+    title2: "技术栈",
+    title3: "项目难点",
+    describe1: `
+    整个项目的主要模块分为：通过后台管理系统实现商品按照分类上架下架和修改商品信息,查看订单进度以及管理人员账号的权限分配`,
+    describe2: "Vue Vue-router  Vue-cli Vue-lodash Axios ES6 Webpack Element Ui  Echarts Vue-table-with-tree-grid",
+    describe3: `使用Element UI进行页面布局
+    使用axios来请求接口，前后端分离 实现商品的增删改查
+    使用vue-cli3.0脚手架搭建项目
+    使用vue-router来做路由，实现单页面跳转 多层路由嵌套，导航守卫实现登陆拦截,
+    使用Echarts.js来实现图表效果
+    使用ES6语法来开发项目
+    使用本地sessionStorage保存token来实现管理登录状态保持`,
+    describe4:`1、路由导航守卫
+                  通过router.beforeEach挂载导航守卫，先判断用户是否在登录页面，是就直接放行，然后获取存储在本地sessionStorage中的token，判断token是否存在，如果不存在就跳转回登录页面（目的是为了防止用户直接通过路由访问页面）
+              2、接口文档的授权API
+                  文档要求必须在请求头中使用Authorization 字段提供 token 令牌
+                通过axios的请求拦截器添加token，保证拥有获取数据的权限`,
+    author: "CL",
+    dataTime: "2020-3-24",
+  }, {
+    id: "2",
+    title: "去哪旅游网移动端页面",
+    title1: "项目描述:",
+    title2: "技术栈",
+    title3: "项目难点",
+    describe1: `
+                  整个项目的主要模块分为： 首页旅游地展示 选择城市 详情页面 天气查询 ,主页划 5 个组件
+                  即 header icon swiper recommend weekend`,
+    describe2: "Vue Vue-router  Vuex Vue-cli Axios ES6 Webpack Element Ui Vue-awesome-swiper",
+    describe3: `首页轮播图 组件主要使用vue-awesome-swiper插件。
+                图标区域页面 每页展示8个，超过时进行分页，可以滚动。
+                天气查询组件 输入城市查询当前天气信息。
+                城市选择页面 主要功能展示城市列表 也可以搜索自己所在的城市 可以点击字母找城市。
+                滑动的功能主要使用betterScroll。
+                创建一个公用组件 Gallary.vue 使用 vue-awesome-swiper 完成图片滚动。
+                Banner.vue 定义变量   showGallary 负责照片墙的显示 点击banner显示照片墙 点击黑暗处关闭。`,
+    describe4: "1、因为点击字母的执行频率非常高,所以需要进行函数节流使用this.timer=setTimeout(()=>{执行代码}, 16) 这样能控制代码最快只能16毫秒执行一次 ",
+    author: "CL",
+    dataTime: "2020-3-24"
+  }, {
+    id: "3",
+    title: "个人博客",
+    title1: "项目描述:",
+    title2: "技术栈",
+    describe1: `
+                整个项目的主要模块分为：登录页面 主页 随笔 关于 添加博客页面  随笔查看 用户查看
+                共划分6个组件，即home、land、login、note、blogger、aboutMe`,
+    describe2: "Vue Vue-router  Vue-cli  ES6 Webpack 	Vuex",
+    describe3: `登录与注册页面使用vue-router实现简单的页面跳转，并进行了简单的表单验证
+              主页显示当前时间，拥有轮播图和博客总览。轮播图主要使用vue-awesome-swiper插件，博客	总览主要使用element ui的Collapse 折叠面板组件。
+              随笔页面主要使用了Vant的日历组件和Vue的axios实现随笔的添加与查看
+              关于我页面简单的CSS动画
+              添加博客页面 使用vue的axios实现博客的上传
+              关于随笔查看和用户查看  主要使用element ui的Collapse 折叠面板组件实现查看后台数据`,
+    author: "CL",
+    dataTime: "2020-3-24"
   }]
 }
-
 const store = new Vuex.Store({
   state,
   mutations: {},

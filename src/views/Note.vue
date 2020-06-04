@@ -16,7 +16,7 @@
             <router-link class="note" to="/note" tag="div">随笔</router-link>
           </div>
           <div class="title">
-            <router-link class="link" to="/resource" tag="div">资源</router-link>
+            <router-link class="link" to="/resource" tag="div">技能</router-link>
           </div>
           <div class="title">
             <router-link to="/about" tag="div">关于我</router-link>
@@ -48,7 +48,7 @@
               </el-menu-item>
               <el-menu-item index="3" route="/resource">
                 <i class="el-icon-menu"></i>
-                <span route slot="title">资源</span>
+                <span route slot="title">技能</span>
               </el-menu-item>
               <el-menu-item index="4" route="/about">
                 <i class="el-icon-menu"></i>
